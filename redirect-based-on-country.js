@@ -8,10 +8,9 @@ async function handleRequest(request) {
 
     // Define redirections
     const languageRules = new Map([
-        ["US", 'fr'],
         ["ES", 'es'],
         ["PA", 'es'],
-        ["FR", 'es']
+        ["FR", 'fr']
     ])
     
     //Get value from key
@@ -26,7 +25,8 @@ async function handleRequest(request) {
         const destinationDomain = protocol + "//" + languageCode + root + path
         return Response.redirect(destinationDomain, 301)
     }        
-
+    
+    // Redirect to english for any other domain
     else {
         const root = "en.domain.com"
         const url = new URL(request.url)
